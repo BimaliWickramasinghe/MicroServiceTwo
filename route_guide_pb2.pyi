@@ -17,3 +17,15 @@ class CreateFileResponse(_message.Message):
     SUCCESS_FIELD_NUMBER: _ClassVar[int]
     success: bool
     def __init__(self, success: bool = ...) -> None: ...
+
+class DeleteFileRequest(_message.Message):
+    __slots__ = ["file_name"]
+    FILE_NAME_FIELD_NUMBER: _ClassVar[int]
+    file_name: str
+    def __init__(self, file_name: _Optional[str] = ...) -> None: ...
+
+class DeleteFileResponse(_message.Message):
+    __slots__ = ["success"]
+    SUCCESS_FIELD_NUMBER: _ClassVar[int]
+    success: bool
+    def __init__(self, success: bool = ...) -> None: ...

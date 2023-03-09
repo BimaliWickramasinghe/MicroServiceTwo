@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11route_guide.proto\x12\tmypackage\"=\n\x11\x43reateFileRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x15\n\rfile_contents\x18\x02 \x01(\x0c\"%\n\x12\x43reateFileResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x32V\n\tMyService\x12I\n\nCreateFile\x12\x1c.mypackage.CreateFileRequest\x1a\x1d.mypackage.CreateFileResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11route_guide.proto\x12\tmypackage\"=\n\x11\x43reateFileRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x15\n\rfile_contents\x18\x02 \x01(\x0c\"%\n\x12\x43reateFileResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"&\n\x11\x44\x65leteFileRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\"%\n\x12\x44\x65leteFileResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x32\xa1\x01\n\tMyService\x12I\n\nCreateFile\x12\x1c.mypackage.CreateFileRequest\x1a\x1d.mypackage.CreateFileResponse\x12I\n\nDeleteFile\x12\x1c.mypackage.DeleteFileRequest\x1a\x1d.mypackage.DeleteFileResponseb\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'route_guide_pb2', globals())
@@ -24,6 +24,10 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _CREATEFILEREQUEST._serialized_end=93
   _CREATEFILERESPONSE._serialized_start=95
   _CREATEFILERESPONSE._serialized_end=132
-  _MYSERVICE._serialized_start=134
-  _MYSERVICE._serialized_end=220
+  _DELETEFILEREQUEST._serialized_start=134
+  _DELETEFILEREQUEST._serialized_end=172
+  _DELETEFILERESPONSE._serialized_start=174
+  _DELETEFILERESPONSE._serialized_end=211
+  _MYSERVICE._serialized_start=214
+  _MYSERVICE._serialized_end=375
 # @@protoc_insertion_point(module_scope)

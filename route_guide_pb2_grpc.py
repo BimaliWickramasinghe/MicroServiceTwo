@@ -19,12 +19,23 @@ class MyServiceStub(object):
                 request_serializer=route__guide__pb2.CreateFileRequest.SerializeToString,
                 response_deserializer=route__guide__pb2.CreateFileResponse.FromString,
                 )
+        self.DeleteFile = channel.unary_unary(
+                '/mypackage.MyService/DeleteFile',
+                request_serializer=route__guide__pb2.DeleteFileRequest.SerializeToString,
+                response_deserializer=route__guide__pb2.DeleteFileResponse.FromString,
+                )
 
 
 class MyServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def CreateFile(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteFile(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -37,6 +48,11 @@ def add_MyServiceServicer_to_server(servicer, server):
                     servicer.CreateFile,
                     request_deserializer=route__guide__pb2.CreateFileRequest.FromString,
                     response_serializer=route__guide__pb2.CreateFileResponse.SerializeToString,
+            ),
+            'DeleteFile': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteFile,
+                    request_deserializer=route__guide__pb2.DeleteFileRequest.FromString,
+                    response_serializer=route__guide__pb2.DeleteFileResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -62,5 +78,22 @@ class MyService(object):
         return grpc.experimental.unary_unary(request, target, '/mypackage.MyService/CreateFile',
             route__guide__pb2.CreateFileRequest.SerializeToString,
             route__guide__pb2.CreateFileResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DeleteFile(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/mypackage.MyService/DeleteFile',
+            route__guide__pb2.DeleteFileRequest.SerializeToString,
+            route__guide__pb2.DeleteFileResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
