@@ -29,6 +29,11 @@ class MyServiceStub(object):
                 request_serializer=route__guide__pb2.WriteFileRequest.SerializeToString,
                 response_deserializer=route__guide__pb2.WriteFileResponse.FromString,
                 )
+        self.ReadFile = channel.unary_unary(
+                '/mypackage.MyService/ReadFile',
+                request_serializer=route__guide__pb2.ReadFileRequest.SerializeToString,
+                response_deserializer=route__guide__pb2.ReadFileResponse.FromString,
+                )
 
 
 class MyServiceServicer(object):
@@ -52,6 +57,12 @@ class MyServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ReadFile(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_MyServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -69,6 +80,11 @@ def add_MyServiceServicer_to_server(servicer, server):
                     servicer.WriteFile,
                     request_deserializer=route__guide__pb2.WriteFileRequest.FromString,
                     response_serializer=route__guide__pb2.WriteFileResponse.SerializeToString,
+            ),
+            'ReadFile': grpc.unary_unary_rpc_method_handler(
+                    servicer.ReadFile,
+                    request_deserializer=route__guide__pb2.ReadFileRequest.FromString,
+                    response_serializer=route__guide__pb2.ReadFileResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -128,5 +144,22 @@ class MyService(object):
         return grpc.experimental.unary_unary(request, target, '/mypackage.MyService/WriteFile',
             route__guide__pb2.WriteFileRequest.SerializeToString,
             route__guide__pb2.WriteFileResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ReadFile(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/mypackage.MyService/ReadFile',
+            route__guide__pb2.ReadFileRequest.SerializeToString,
+            route__guide__pb2.ReadFileResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

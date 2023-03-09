@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11route_guide.proto\x12\tmypackage\"=\n\x11\x43reateFileRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x15\n\rfile_contents\x18\x02 \x01(\x0c\"%\n\x12\x43reateFileResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"&\n\x11\x44\x65leteFileRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\"%\n\x12\x44\x65leteFileResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"3\n\x10WriteFileRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x0c\"$\n\x11WriteFileResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x32\xe9\x01\n\tMyService\x12I\n\nCreateFile\x12\x1c.mypackage.CreateFileRequest\x1a\x1d.mypackage.CreateFileResponse\x12I\n\nDeleteFile\x12\x1c.mypackage.DeleteFileRequest\x1a\x1d.mypackage.DeleteFileResponse\x12\x46\n\tWriteFile\x12\x1b.mypackage.WriteFileRequest\x1a\x1c.mypackage.WriteFileResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11route_guide.proto\x12\tmypackage\"=\n\x11\x43reateFileRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x15\n\rfile_contents\x18\x02 \x01(\x0c\"%\n\x12\x43reateFileResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"&\n\x11\x44\x65leteFileRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\"%\n\x12\x44\x65leteFileResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"3\n\x10WriteFileRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x0c\"$\n\x11WriteFileResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"$\n\x0fReadFileRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\" \n\x10ReadFileResponse\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\x32\xae\x02\n\tMyService\x12I\n\nCreateFile\x12\x1c.mypackage.CreateFileRequest\x1a\x1d.mypackage.CreateFileResponse\x12I\n\nDeleteFile\x12\x1c.mypackage.DeleteFileRequest\x1a\x1d.mypackage.DeleteFileResponse\x12\x46\n\tWriteFile\x12\x1b.mypackage.WriteFileRequest\x1a\x1c.mypackage.WriteFileResponse\x12\x43\n\x08ReadFile\x12\x1a.mypackage.ReadFileRequest\x1a\x1b.mypackage.ReadFileResponseb\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'route_guide_pb2', globals())
@@ -32,6 +32,10 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _WRITEFILEREQUEST._serialized_end=264
   _WRITEFILERESPONSE._serialized_start=266
   _WRITEFILERESPONSE._serialized_end=302
-  _MYSERVICE._serialized_start=305
-  _MYSERVICE._serialized_end=538
+  _READFILEREQUEST._serialized_start=304
+  _READFILEREQUEST._serialized_end=340
+  _READFILERESPONSE._serialized_start=342
+  _READFILERESPONSE._serialized_end=374
+  _MYSERVICE._serialized_start=377
+  _MYSERVICE._serialized_end=679
 # @@protoc_insertion_point(module_scope)

@@ -30,6 +30,15 @@ class MyServiceServicer(route_guide_pb2_grpc.MyServiceServicer):
         except:
             response = route_guide_pb2.WriteFileResponse(success=False)
         return response
+    
+    def ReadFile(self, request, context):
+        try:
+            with open(request.file_name, 'rb') as f:
+                data = f.read()
+            response = route_guide_pb2.ReadFileResponse(data=data)
+        except:
+            response = route_guide_pb2.ReadFileResponse(data=b'')
+        return response
 
 server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
 route_guide_pb2_grpc.add_MyServiceServicer_to_server(MyServiceServicer(), server)
