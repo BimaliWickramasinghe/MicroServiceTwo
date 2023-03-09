@@ -33,15 +33,20 @@ class MyServiceServicer(route_guide_pb2_grpc.MyServiceServicer):
     
     def ReadFile(self, request, context):
         try:
-            with open(request.file_name, 'rb') as f:
-                data = f.read()
-            response = route_guide_pb2.ReadFileResponse(data=data)
-        except:
-            response = route_guide_pb2.ReadFileResponse(data=b'')
-        return response
+            with open(request.file_path, 'rb') as f:
+                file_contents = f.read()
+            return route_guide_pb2.ReadFileResponse(success=True, file_contents=file_contents.encode())
+        except Exception as e:
+            return route_guide_pb2.ReadFileResponse(success=False, error_message=str(e))
 
-server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-route_guide_pb2_grpc.add_MyServiceServicer_to_server(MyServiceServicer(), server)
-server.add_insecure_port('[::]:50051')
-server.start()
-server.wait_for_termination()
+
+def serve():
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+    route_guide_pb2_grpc.add_MyServiceServicer_to_server(MyServiceServicer(), server)
+    server.add_insecure_port('[::]:50051')
+    server.start()
+    print('Server started and listening on port 50051')
+    server.wait_for_termination()
+
+if __name__ == '__main__':
+    serve()

@@ -2,22 +2,19 @@ import grpc
 import route_guide_pb2
 import route_guide_pb2_grpc
 
-def read_file(stub, file_name):
-    # Read the contents of the file on the server
-    request = route_guide_pb2.ReadFileRequest(file_name=file_name)
-    response = stub.ReadFile(request)
-    if response.success:
-        return response.file_contents
-    else:
-        return None
-
-if __name__ == '__main__':
-    with grpc.insecure_channel('localhost:50051') as channel:
+if __name__ == "__main__":
+    with grpc.insecure_channel("localhost:50051") as channel:
         stub = route_guide_pb2_grpc.MyServiceStub(channel)
-        file_name = 'newfile.txt'
-        file_contents = read_file(stub, file_name)
+
+        file_path = "newfile.txt"
+
+        request = route_guide_pb2.ReadFileRequest(file_path=file_path)
+        response = stub.ReadFile(request)
+
+        file_contents = response.file_contents
         if file_contents:
-            print('Contents of the file {}:'.format(file_name))
+            print(f"Contents of the file {file_path}:")
             print(file_contents.decode())
         else:
-            print('Failed to read file {}.'.format(file_name))
+            print (response)
+            print(f"Failed to read file {file_path}.")
