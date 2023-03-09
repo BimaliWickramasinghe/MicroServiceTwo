@@ -13,17 +13,17 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11route_guide.proto\x12\x05unary\"\x1a\n\x07Message\x12\x0f\n\x07message\x18\x01 \x01(\t\"4\n\x0fMessageResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x10\n\x08received\x18\x02 \x01(\x08\x32\x46\n\x05Unary\x12=\n\x11GetServerResponse\x12\x0e.unary.Message\x1a\x16.unary.MessageResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11route_guide.proto\x12\tmypackage\"=\n\x11\x43reateFileRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x15\n\rfile_contents\x18\x02 \x01(\x0c\"%\n\x12\x43reateFileResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x32V\n\tMyService\x12I\n\nCreateFile\x12\x1c.mypackage.CreateFileRequest\x1a\x1d.mypackage.CreateFileResponseb\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'route_guide_pb2', globals())
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _MESSAGE._serialized_start=28
-  _MESSAGE._serialized_end=54
-  _MESSAGERESPONSE._serialized_start=56
-  _MESSAGERESPONSE._serialized_end=108
-  _UNARY._serialized_start=110
-  _UNARY._serialized_end=180
+  _CREATEFILEREQUEST._serialized_start=32
+  _CREATEFILEREQUEST._serialized_end=93
+  _CREATEFILERESPONSE._serialized_start=95
+  _CREATEFILERESPONSE._serialized_end=132
+  _MYSERVICE._serialized_start=134
+  _MYSERVICE._serialized_end=220
 # @@protoc_insertion_point(module_scope)

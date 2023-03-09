@@ -1,31 +1,20 @@
 import grpc
 from concurrent import futures
-import time
- 
+import route_guide_pb2
+import route_guide_pb2_grpc
 
+class MyServiceServicer(route_guide_pb2_grpc.MyServiceServicer):
+    def CreateFile(self, request, context):
+        try:
+            with open(request.file_name, 'wb') as f:
+                f.write(request.file_contents)
+            response = route_guide_pb2.CreateFileResponse(success=True)
+        except:
+            response = route_guide_pb2.CreateFileResponse(success=False)
+        return response
 
-class UnaryService(pb2_grpc.UnaryServicer):
-
-    def __init__(self, *args, **kwargs):
-        pass
-
-    def GetServerResponse(self, request, context):
-
-        # get the string from the incoming request
-        message = request.message
-        result = f'Hello I am up and running received "{message}" message from you'
-        result = {'message': result, 'received': True}
-
-        return pb2.MessageResponse(**result)
-
-
-def serve():
-    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    pb2_grpc.add_UnaryServicer_to_server(UnaryService(), server)
-    server.add_insecure_port('[::]:50051')
-    server.start()
-    server.wait_for_termination()
-
-
-if __name__ == '__main__':
-    serve()
+server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+route_guide_pb2_grpc.add_MyServiceServicer_to_server(MyServiceServicer(), server)
+server.add_insecure_port('[::]:50051')
+server.start()
+server.wait_for_termination()

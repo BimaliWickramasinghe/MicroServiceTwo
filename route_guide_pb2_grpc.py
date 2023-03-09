@@ -5,7 +5,7 @@ import grpc
 import route_guide_pb2 as route__guide__pb2
 
 
-class UnaryStub(object):
+class MyServiceStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -14,45 +14,42 @@ class UnaryStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.GetServerResponse = channel.unary_unary(
-                '/unary.Unary/GetServerResponse',
-                request_serializer=route__guide__pb2.Message.SerializeToString,
-                response_deserializer=route__guide__pb2.MessageResponse.FromString,
+        self.CreateFile = channel.unary_unary(
+                '/mypackage.MyService/CreateFile',
+                request_serializer=route__guide__pb2.CreateFileRequest.SerializeToString,
+                response_deserializer=route__guide__pb2.CreateFileResponse.FromString,
                 )
 
 
-class UnaryServicer(object):
+class MyServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def GetServerResponse(self, request, context):
-        """A simple RPC.
-
-        Obtains the MessageResponse at a given position.
-        """
+    def CreateFile(self, request, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_UnaryServicer_to_server(servicer, server):
+def add_MyServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'GetServerResponse': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetServerResponse,
-                    request_deserializer=route__guide__pb2.Message.FromString,
-                    response_serializer=route__guide__pb2.MessageResponse.SerializeToString,
+            'CreateFile': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateFile,
+                    request_deserializer=route__guide__pb2.CreateFileRequest.FromString,
+                    response_serializer=route__guide__pb2.CreateFileResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'unary.Unary', rpc_method_handlers)
+            'mypackage.MyService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class Unary(object):
+class MyService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def GetServerResponse(request,
+    def CreateFile(request,
             target,
             options=(),
             channel_credentials=None,
@@ -62,8 +59,8 @@ class Unary(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/unary.Unary/GetServerResponse',
-            route__guide__pb2.Message.SerializeToString,
-            route__guide__pb2.MessageResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/mypackage.MyService/CreateFile',
+            route__guide__pb2.CreateFileRequest.SerializeToString,
+            route__guide__pb2.CreateFileResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
